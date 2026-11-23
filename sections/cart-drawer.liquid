@@ -1,0 +1,246 @@
+<!--
+    =====================================================================
+    INTERACTIVE DEMO STAGE
+    =====================================================================
+-->
+
+<style>
+    /* Demo Preview Bar (for testing all 3 drawer states & navigation) */
+    .demo-stage {
+        padding-block: var(--space-13);
+        min-height: 62vh;
+    }
+
+    .demo-panel {
+        background-color: var(--color-bg-alt);
+        border: 1px solid var(--color-border-light);
+        padding: var(--space-10);
+        max-width: 760px;
+    }
+
+    .demo-panel__eyebrow {
+        font-size: var(--text-label-size);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-secondary);
+        margin-bottom: var(--space-3);
+    }
+
+    .demo-panel__title {
+        font-family: var(--font-display);
+        font-size: var(--text-h1-size);
+        line-height: var(--text-h1-lh);
+        font-weight: 500;
+        margin-bottom: var(--space-4);
+    }
+
+    .demo-panel__desc {
+        color: var(--color-tertiary);
+        margin-bottom: var(--space-8);
+    }
+
+    .demo-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-5);
+    }
+</style>
+
+<div class="container" style="margin: 150px auto; display:none !important;">
+    <div class="demo-panel">
+        <p class="demo-panel__eyebrow">Solis Theme Components</p>
+        <h1 class="demo-panel__title">Header Navigation &amp; Side Cart Drawer</h1>
+        <p class="demo-panel__desc">
+            Hover over <strong>Trending</strong> in the header to preview the desktop Mega-Menu, resize to mobile to test the 3-level off-canvas drawer, or launch any of the three
+            Side Cart Drawer states below.
+        </p>
+        <div class="demo-controls">
+            <button type="button" class="btn btn--outlined btn--md" id="btnStateEmpty">Open Empty Bag</button>
+            <button type="button" class="btn btn--primary btn--md" id="btnStateItems">Open Drawer (Items Added)</button>
+            <button type="button" class="btn btn--primary btn--md" id="btnStateUpsell">Open Drawer (With Upsell)</button>
+        </div>
+    </div>
+</div>
+
+<!--
+    =====================================================================
+    SLIDE-OUT SIDE CART DRAWER (All 3 States + Swiper Upsell)
+    =====================================================================
+-->
+<div class="cart-drawer-backdrop" id="cartBackdrop"></div>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+    <!-- Header -->
+    <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title" id="cartDrawerTitle">Your Bag (<span id="drawerCount">2</span>)</h2>
+        <button type="button" class="cart-drawer__close" id="closeCartBtn" aria-label="Close bag">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Free Shipping Progress Bar -->
+    <div class="cart-shipping">
+        <p class="cart-shipping__text" id="shippingText">You're <strong>$42</strong> away from free shipping.</p>
+        <div class="cart-shipping__bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="82">
+            <div class="cart-shipping__fill" id="shippingFill" style="width: 82%"></div>
+        </div>
+    </div>
+
+    <!-- Scrollable Body -->
+    <div class="cart-drawer__body">
+        <!-- State 1: Empty Bag -->
+        <div class="cart-drawer__empty">
+            <h3 class="cart-drawer__empty-title">Your Bag is Empty</h3>
+            <p class="cart-drawer__empty-desc">Each piece of Solis jewelry is meticulously crafted. Begin your curation with our iconic collections.</p>
+        </div>
+
+        <!-- State 2: Cart Items -->
+        <div class="cart-items" id="cartItemsList">
+            <!-- Rendered dynamically from state -->
+        </div>
+
+        <!-- State 3: Upsell Carousel ("You May Also Like") -->
+        <section class="cart-upsell" aria-label="You May Also Like">
+            <div class="cart-upsell__header">
+                <h3 class="cart-upsell__title">You May Also Like</h3>
+                <div class="cart-upsell__nav">
+                    <button type="button" class="cart-upsell__arrow upsell-prev" aria-label="Previous upsell products">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" class="cart-upsell__arrow upsell-next" aria-label="Next upsell products">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="swiper cart-upsell-swiper">
+                <div class="swiper-wrapper">
+                    <article class="swiper-slide product-card">
+                        <div class="cart-upsell-card__media">
+                            <img src="https://placehold.co/320x320/F6F2ED/242220?text=Gold+Ring" alt="Classic Gold Three-Stone Diamond" class="cart-upsell-card__img" />
+                            <button
+                                type="button"
+                                class="cart-upsell-card__quick-add js-quick-add"
+                                data-title="Classic Gold Three-Stone Diamond"
+                                data-variant="18k Gold"
+                                data-price="12000"
+                                data-img="https://placehold.co/152x152/F6F2ED/242220?text=Gold+Ring"
+                            >
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                </svg>
+                                <span>ADD TO BAG</span>
+                            </button>
+                        </div>
+                        <div class="product-card__rating">
+                            <span class="star-row">★★★★★</span>
+                            <span class="product-card__rating-text">4,95 (34)</span>
+                        </div>
+                        <h4 class="product-card__title">Classic Gold Three-Stone...</h4>
+                        <div class="product-card__price-row">
+                            <span class="price-current">$12,000.00</span>
+                            <span class="price-compare">$15,000.00</span>
+                        </div>
+                        <div class="swatch-list">
+                            <button type="button" class="swatch-btn is-active" style="background-color: #c8a45d" aria-label="Yellow Gold"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #d8a48f" aria-label="Rose Gold"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #d6d4d0" aria-label="Platinum"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #242220" aria-label="Black Rhodium"></button>
+                        </div>
+                    </article>
+
+                    <article class="swiper-slide product-card">
+                        <div class="cart-upsell-card__media">
+                            <img src="https://placehold.co/320x320/F6F2ED/242220?text=Earrings" alt="Lumina Pearl Drops" class="cart-upsell-card__img" />
+                            <button
+                                type="button"
+                                class="cart-upsell-card__quick-add js-quick-add"
+                                data-title="Lumina Pearl Drops"
+                                data-variant="18k Gold"
+                                data-price="850"
+                                data-img="https://placehold.co/152x152/F6F2ED/242220?text=Earrings"
+                            >
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                </svg>
+                                <span>ADD TO BAG</span>
+                            </button>
+                        </div>
+                        <div class="product-card__rating">
+                            <span class="star-row">★★★★★</span>
+                            <span class="product-card__rating-text">4,95 (34)</span>
+                        </div>
+                        <h4 class="product-card__title">Lumina Pearl Drops</h4>
+                        <div class="product-card__price-row">
+                            <span class="price-current">$850.00</span>
+                            <span class="price-compare">$1,100.00</span>
+                        </div>
+                        <div class="swatch-list">
+                            <button type="button" class="swatch-btn is-active" style="background-color: #c8a45d" aria-label="Yellow Gold"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #d8a48f" aria-label="Rose Gold"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #d6d4d0" aria-label="Platinum"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #242220" aria-label="Black Rhodium"></button>
+                        </div>
+                    </article>
+
+                    <article class="swiper-slide product-card">
+                        <div class="cart-upsell-card__media">
+                            <img src="https://placehold.co/320x320/F6F2ED/242220?text=Pendant" alt="Crescent Moon Pendant" class="cart-upsell-card__img" />
+                            <button
+                                type="button"
+                                class="cart-upsell-card__quick-add js-quick-add"
+                                data-title="Crescent Moon Pendant"
+                                data-variant="18k Gold"
+                                data-price="1210"
+                                data-img="https://placehold.co/152x152/F6F2ED/242220?text=Pendant"
+                            >
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                </svg>
+                                <span>ADD TO BAG</span>
+                            </button>
+                        </div>
+                        <div class="product-card__rating">
+                            <span class="star-row">★★★★★</span>
+                            <span class="product-card__rating-text">4,80 (120)</span>
+                        </div>
+                        <h4 class="product-card__title">Crescent Moon Pendant</h4>
+                        <div class="product-card__price-row">
+                            <span class="price-current">$1,210.00</span>
+                            <span class="price-compare">$1,500.00</span>
+                        </div>
+                        <div class="swatch-list">
+                            <button type="button" class="swatch-btn is-active" style="background-color: #c8a45d" aria-label="Yellow Gold"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #d8a48f" aria-label="Rose Gold"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #d6d4d0" aria-label="Platinum"></button>
+                            <button type="button" class="swatch-btn" style="background-color: #242220" aria-label="Black Rhodium"></button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sticky Footer -->
+    <div class="cart-drawer__footer">
+        <div class="cart-subtotal">
+            <span class="cart-subtotal__label">Subtotal</span>
+            <span class="cart-subtotal__value" id="cartSubtotal">$900.00</span>
+        </div>
+        <div class="cart-footer__actions">
+            <a href="#cart" class="btn btn--outlined btn--md btn--full">VIEW BAG</a>
+            <button type="button" class="btn btn--primary btn--md btn--full" id="checkoutBtn">CHECKOUT</button>
+            <button type="button" class="btn btn--md btn--full btn--shop-pay" id="shopPayBtn">Buy with <span class="shop-pay-wordmark">Shop Pay</span></button>
+        </div>
+    </div>
+</aside>

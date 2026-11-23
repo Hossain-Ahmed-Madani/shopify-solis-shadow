@@ -1,1 +1,851 @@
-<h1>This is a homepage</h1>
+ {{ 'index.css' | asset_url | stylesheet_tag }}
+
+
+<!--
+    ===================================================================
+    SECTION 1: HERO BANNER SLIDER (Swiper)
+    ===================================================================
+-->
+
+<section class="hero-section" aria-label="Featured Collections">
+    <div class="swiper hero-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide hero-slide">
+                <img
+                    src="https://placehold.co/1600x760/65574D/FCFAF7?text=The+Summer+Edit+Hero"
+                    alt="Model wearing sculptural 18k gold drop hoop earrings in warm sunlight"
+                    class="hero-slide__img"
+                />
+                <div class="hero-slide__overlay"></div>
+                <div class="hero-slide__content">
+                    <div class="container">
+                        <div class="hero-slide__text">
+                            <p class="hero-slide__eyebrow">THE SUMMER EDIT</p>
+                            <h1 class="hero-slide__title">Chasing the sun</h1>
+                            <div class="hero-slide__actions">
+                                <a href="#new-arrivals" class="btn btn--primary btn--md">SHOP NOW</a>
+                                <a href="#signatures" class="btn btn--secondary btn--md">DISCOVER MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide hero-slide">
+                <img
+                    src="https://placehold.co/1600x760/242220/FCFAF7?text=The+Gold+Edit+Hero"
+                    alt="Model wearing layered 18k gold pendant necklaces at dusk"
+                    class="hero-slide__img"
+                />
+                <div class="hero-slide__overlay"></div>
+                <div class="hero-slide__content">
+                    <div class="container">
+                        <div class="hero-slide__text">
+                            <p class="hero-slide__eyebrow">THE GOLD EDIT</p>
+                            <h2 class="hero-slide__title">Catch the light</h2>
+                            <div class="hero-slide__actions">
+                                <a href="#signatures" class="btn btn--primary btn--md">SHOP GOLD</a>
+                                <a href="#story" class="btn btn--secondary btn--md">OUR STORY</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide hero-slide">
+                <img
+                    src="https://placehold.co/1600x760/9A8E82/FCFAF7?text=The+Eternal+Edit+Hero"
+                    alt="Editorial portrait with sculptural 18k gold collar and pearl earrings"
+                    class="hero-slide__img"
+                />
+                <div class="hero-slide__overlay"></div>
+                <div class="hero-slide__content">
+                    <div class="container">
+                        <div class="hero-slide__text">
+                            <p class="hero-slide__eyebrow">THE ETERNAL EDIT</p>
+                            <h2 class="hero-slide__title">Sculptural warmth</h2>
+                            <div class="hero-slide__actions">
+                                <a href="#eternal-look" class="btn btn--primary btn--md">SHOP THE LOOK</a>
+                                <a href="#categories" class="btn btn--secondary btn--md">EXPLORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper-pagination hero-pagination"></div>
+        <div class="hero-controls-corner">
+            <button class="hero-corner-btn hero-prev" aria-label="Previous hero slide">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="hero-corner-btn hero-next" aria-label="Next hero slide">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 2: SHOP BY CATEGORY (Swiper)
+    ===================================================================
+-->
+<section class="section-block" id="categories">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="heading-h2">Shop by Category</h2>
+            <div class="swiper-nav-group">
+                <button class="swiper-arrow-btn cat-prev" aria-label="Previous categories">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="swiper-arrow-btn cat-next" aria-label="Next categories">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="swiper category-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="#signatures" class="category-card">
+                        <div class="category-card__media">
+                            <img src="https://placehold.co/600x600/F6F2ED/65574D?text=Necklace" alt="Necklace collection" class="category-card__img" loading="lazy" />
+                        </div>
+                        <p class="category-card__title">Necklace</p>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#signatures" class="category-card">
+                        <div class="category-card__media">
+                            <img src="https://placehold.co/600x600/F6F2ED/65574D?text=Earrings" alt="Earrings collection" class="category-card__img" loading="lazy" />
+                        </div>
+                        <p class="category-card__title">Earrings</p>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#signatures" class="category-card">
+                        <div class="category-card__media">
+                            <img src="https://placehold.co/600x600/F6F2ED/65574D?text=Bracelet" alt="Bracelet collection" class="category-card__img" loading="lazy" />
+                        </div>
+                        <p class="category-card__title">Bracelet</p>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#signatures" class="category-card">
+                        <div class="category-card__media">
+                            <img src="https://placehold.co/600x600/F6F2ED/65574D?text=Rings" alt="Rings collection" class="category-card__img" loading="lazy" />
+                        </div>
+                        <p class="category-card__title">Rings</p>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="#spotlight" class="category-card">
+                        <div class="category-card__media">
+                            <img src="https://placehold.co/600x600/F6F2ED/65574D?text=Pendants" alt="Pendants collection" class="category-card__img" loading="lazy" />
+                        </div>
+                        <p class="category-card__title">Pendants</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 3: OUR NEW ARRIVALS (Swiper)
+    ===================================================================
+-->
+<section class="section-block" id="new-arrivals" style="padding-top: 0">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="heading-h2">Our New Arrivals</h2>
+            <div class="swiper-nav-group">
+                <button class="swiper-arrow-btn arrivals-prev" aria-label="Previous new arrivals">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="swiper-arrow-btn arrivals-next" aria-label="Next new arrivals">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="swiper arrivals-swiper">
+            <div class="swiper-wrapper" id="arrivalsWrapper"></div>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 4: PRODUCT SPOTLIGHT (Crescent Moon Pendant)
+    ===================================================================
+-->
+<section class="section-block" id="spotlight" style="padding-top: 0">
+    <div class="container">
+        <div class="spotlight-grid">
+            <div class="spotlight-media">
+                <span class="discount-badge">19% OFF</span>
+                <img
+                    src="https://placehold.co/800x680/F6F2ED/242220?text=Crescent+Moon+Pendant"
+                    alt="Crescent Moon Pendant in 18k yellow gold and pave diamonds"
+                    class="spotlight-media__img"
+                    loading="lazy"
+                />
+            </div>
+
+            <div class="spotlight-info">
+                <h2 class="spotlight-info__title">Crescent Moon Pendant</h2>
+                <div class="spotlight-info__rating">
+                    <span class="star-row star-row--filled" aria-label="4.8 out of 5 stars"> ★★★★★ </span>
+                    <span>4.8 (120 reviews)</span>
+                </div>
+                <p class="spotlight-info__desc">
+                    Contemporary drop pendant featuring luminous pave diamonds set in sculpted 18k yellow gold. This modern design combines celestial beauty with sleek geometric
+                    elements, creating a sophisticated and versatile piece.
+                </p>
+                <a href="#spotlight" class="spotlight-info__more">Read More...</a>
+
+                <div class="spotlight-info__price">
+                    <span class="price-current">$1,210.00</span>
+                    <span class="price-compare">$1,500.00</span>
+                </div>
+
+                <button class="btn btn--primary btn--lg btn--full js-add-to-bag" data-product="Crescent Moon Pendant">ADD TO BAG</button>
+                <a href="#signatures" class="spotlight-info__details-link">VIEW FULL DETAILS</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 5: FULL-WIDTH EDITORIAL BANNER (THE GOLD EDIT)
+    ===================================================================
+-->
+<section class="editorial-banner" aria-label="The Gold Edit">
+    <img
+        src="https://placehold.co/1600x640/242220/D8C9B8?text=The+Gold+Edit+Banner"
+        alt="Woman wearing layered 18k gold necklaces"
+        class="editorial-banner__img"
+        loading="lazy"
+    />
+    <div class="editorial-banner__overlay"></div>
+    <div class="container editorial-banner__inner">
+        <div class="editorial-banner__content">
+            <p class="editorial-banner__eyebrow">THE GOLD EDIT</p>
+            <h2 class="editorial-banner__title">Catch The Light</h2>
+            <a href="#signatures" class="btn btn--secondary btn--md">SHOP GOLD</a>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 6: HOW IT STARTED (BRAND STORY)
+    ===================================================================
+-->
+<section class="section-block" id="story">
+    <div class="container">
+        <h2 class="heading-h2 story-content__title">How It Started</h2>
+        <div class="story-grid">
+            <div class="story-content">
+                <h3 class="story-content__subtitle">Timeless jewelry for everyday moments</h3>
+                <p class="story-content__text">Our jewellery is crafted to celebrate timeless beauty and modern elegance.</p>
+                <p class="story-content__text">
+                    Dive deep into our exquisite collections, uncover a wide array of certified designs that blend tradition with innovation, and keep yourself updated with the
+                    latest trends and exclusive offers by exploring the comprehensive links available in our footer section. Whether you're seeking inspiration or detailed
+                    information, our resources are designed to keep you connected and informed every step of the way.
+                </p>
+                <a href="#footer" class="btn btn--outlined btn--md story-content__cta">READ FULL STORY</a>
+            </div>
+
+            <div class="story-media">
+                <img
+                    src="https://placehold.co/800x600/F6F2ED/65574D?text=Craftsmanship+Story"
+                    alt="18k gold gemstone drop earrings on champagne silk and travertine"
+                    class="story-media__img"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 7: SOLIS SIGNATURES (4x2 PRODUCT GRID)
+    ===================================================================
+-->
+<section class="section-block" id="signatures" style="padding-top: 0">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="heading-h2">Solis Signatures</h2>
+        </div>
+
+        <div class="products-grid-4" id="signaturesGrid"></div>
+
+        <div class="section-cta-center">
+            <a href="#only-for-you" class="btn btn--primary btn--md">VIEW ALL COLLECTIONS</a>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 8: SHOP THE LOOK ("The Eternal" Interactive Hotspots)
+    ===================================================================
+-->
+<section class="section-block" id="eternal-look" style="padding-top: 0">
+    <div class="container">
+        <div class="lookbook-card">
+            <img
+                src="https://placehold.co/1400x720/65574D/FCFAF7?text=The+Eternal+Lookbook"
+                alt="The Eternal 18k gold sculptural collection"
+                class="lookbook-card__img"
+                loading="lazy"
+            />
+            <div class="lookbook-card__overlay"></div>
+
+            <div class="lookbook-card__text">
+                <h2 class="lookbook-card__title">The Eternal</h2>
+                <p class="lookbook-card__desc">Sculptural forms meet the warmth of 18k gold. Discover our curated edit of timeless statement pieces.</p>
+            </div>
+
+            <div class="hotspot" style="left: 58%; top: 38%">
+                <button class="hotspot__dot" aria-label="View Lumina Pearl Drops">+</button>
+                <div class="hotspot__popover">
+                    <img src="https://placehold.co/120x120/F6F2ED/242220?text=Pearl" alt="Lumina Pearl Drops" class="hotspot__thumb" />
+                    <div class="hotspot__meta">
+                        <p class="hotspot__name">Lumina Pearl Drops</p>
+                        <p class="hotspot__price">$850</p>
+                        <a href="#signatures" class="hotspot__link">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotspot is-active" style="left: 50%; top: 68%">
+                <button class="hotspot__dot" aria-label="View Heritage Link Choker">+</button>
+                <div class="hotspot__popover">
+                    <img src="https://placehold.co/120x120/F6F2ED/242220?text=Choker" alt="Heritage Link Choker" class="hotspot__thumb" />
+                    <div class="hotspot__meta">
+                        <p class="hotspot__name">Heritage Link Choker</p>
+                        <p class="hotspot__price">$3,400</p>
+                        <a href="#signatures" class="hotspot__link">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hotspot" style="left: 63%; top: 53%">
+                <button class="hotspot__dot" aria-label="View Sculpted Dome Ring">+</button>
+                <div class="hotspot__popover">
+                    <img src="https://placehold.co/120x120/F6F2ED/242220?text=Ring" alt="Sculpted Dome Ring" class="hotspot__thumb" />
+                    <div class="hotspot__meta">
+                        <p class="hotspot__name">Sculpted Dome Ring</p>
+                        <p class="hotspot__price">$1,150</p>
+                        <a href="#signatures" class="hotspot__link">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 9: SPECIAL DEALS COUNTDOWN BANNER
+    ===================================================================
+-->
+<section class="deals-banner" aria-label="Special Deals Countdown">
+    <div class="container deals-banner__inner">
+        <div>
+            <span class="deals-banner__tag">Special Deals</span>
+            <h2 class="deals-banner__title">Discover Offers on Jewelry Collection</h2>
+            <p class="deals-banner__subtitle">Selected pieces from our seasonal edit, at special prices.</p>
+        </div>
+
+        <div class="countdown-grid" id="dealsCountdown" aria-live="off">
+            <div class="countdown-box">
+                <div class="countdown-box__value" id="cdDays">105</div>
+                <div class="countdown-box__label">Days</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-box__value" id="cdHours">08</div>
+                <div class="countdown-box__label">Hours</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-box__value" id="cdMins">01</div>
+                <div class="countdown-box__label">Mins</div>
+            </div>
+            <div class="countdown-box">
+                <div class="countdown-box__value" id="cdSecs">23</div>
+                <div class="countdown-box__label">Secs</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 10: TRUST / VALUE PROPOSITION BAR
+    ===================================================================
+-->
+<section class="trust-bar" aria-label="Customer benefits">
+    <div class="container trust-grid">
+        <div class="trust-item">
+            <svg class="trust-item__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="1" y="3" width="15" height="13"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            <h3 class="trust-item__title">Free Shipping</h3>
+            <p class="trust-item__desc">Enjoy complimentary shipping on purchases exceeding $75. Check out our latest collection!</p>
+        </div>
+
+        <div class="trust-item">
+            <svg class="trust-item__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M12 2a3 3 0 0 0-3 3v1H6a2 2 0 0 0-2 2v11a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a2 2 0 0 0-2-2h-3V5a3 3 0 0 0-3-3z"></path>
+                <path d="M12 10v6"></path>
+                <path d="M9.5 13.5c0 1.1 1.1 2 2.5 2s2.5-.9 2.5-2-1.1-1.5-2.5-1.5-2.5-.4-2.5-1.5 1.1-2 2.5-2 2.5.9 2.5 2"></path>
+            </svg>
+            <h3 class="trust-item__title">Buy Now. Pay Later</h3>
+            <p class="trust-item__desc">We collaborate with Sezzle and Klarna. Shop today and enjoy flexible payment options!</p>
+        </div>
+
+        <div class="trust-item">
+            <svg class="trust-item__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                <rect x="2" y="7" width="20" height="5"></rect>
+                <line x1="12" y1="22" x2="12" y2="7"></line>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+            </svg>
+            <h3 class="trust-item__title">Cashback Reward</h3>
+            <p class="trust-item__desc">Join our rewards program to access exclusive discounts just for members!</p>
+        </div>
+
+        <div class="trust-item">
+            <svg class="trust-item__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <h3 class="trust-item__title">Secure Payments</h3>
+            <p class="trust-item__desc">Feel secure knowing your personal information is safeguarded with top-notch encryption.</p>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 11: ONLY FOR YOU (STICKY PROMO + 2x3 PRODUCT GRID)
+    ===================================================================
+-->
+<section class="section-block" id="only-for-you">
+    <div class="container only-for-you-grid">
+        <div class="promo-sticky-card">
+            <img
+                src="https://placehold.co/600x760/000000/FCFAF7?text=Only+For+You"
+                alt="Model wearing cascading diamond chandelier earrings"
+                class="promo-sticky-card__img"
+                loading="lazy"
+            />
+            <div class="promo-sticky-card__overlay">
+                <p class="promo-sticky-card__eyebrow">Only for you</p>
+                <h2 class="promo-sticky-card__title">Treat yourself to a free gift with every purchase over $100!</h2>
+                <a href="#signatures" class="btn btn--secondary btn--sm">EXPLORE THE COLLECTION</a>
+            </div>
+        </div>
+
+        <div class="products-grid-2" id="onlyForYouGrid"></div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 12: WORN BY YOU (SOCIAL GALLERY SWIPER)
+    ===================================================================
+-->
+<section class="section-block" id="worn-by-you" style="padding-top: 0">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="heading-h2">Worn by You</h2>
+            <div class="swiper-nav-group">
+                <button class="swiper-arrow-btn worn-prev" aria-label="Previous social posts">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="swiper-arrow-btn worn-next" aria-label="Next social posts">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="swiper worn-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide worn-card">
+                    <img src="https://placehold.co/450x630/D8C9B8/242220?text=Look+01" alt="Solis community look 1" class="worn-card__img" loading="lazy" />
+                </div>
+                <div class="swiper-slide worn-card">
+                    <img src="https://placehold.co/450x630/E9E1D8/242220?text=Look+02" alt="Solis community look 2" class="worn-card__img" loading="lazy" />
+                </div>
+                <div class="swiper-slide worn-card">
+                    <img src="https://placehold.co/450x630/9A8E82/FCFAF7?text=Reel+03" alt="Solis community video look" class="worn-card__img" loading="lazy" />
+                    <button class="worn-card__play" aria-label="Play lookbook reel">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <div class="swiper-slide worn-card">
+                    <img src="https://placehold.co/450x630/F6F2ED/242220?text=Look+04" alt="Solis community ring stack" class="worn-card__img" loading="lazy" />
+                </div>
+                <div class="swiper-slide worn-card">
+                    <img src="https://placehold.co/450x630/65574D/FCFAF7?text=Reel+05" alt="Solis community styling reel" class="worn-card__img" loading="lazy" />
+                    <button class="worn-card__play" aria-label="Play styling reel">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                <div class="swiper-slide worn-card">
+                    <img src="https://placehold.co/450x630/242220/FCFAF7?text=Look+06" alt="Solis community evening look" class="worn-card__img" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    ===================================================================
+    SECTION 13: RECENT POSTS (BLOG SWIPER)
+    ===================================================================
+-->
+<section class="section-block" id="blog" style="padding-top: 0">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="heading-h2">Recent Posts</h2>
+            <div class="swiper-nav-group">
+                <button class="swiper-arrow-btn posts-prev" aria-label="Previous blog posts">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="swiper-arrow-btn posts-next" aria-label="Next blog posts">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="swiper posts-swiper">
+            <div class="swiper-wrapper">
+                <article class="swiper-slide post-card">
+                    <div class="post-card__media">
+                        <img src="https://placehold.co/640x480/F6F2ED/65574D?text=Gemstones" alt="Colored gemstone jewelry" class="post-card__img" loading="lazy" />
+                    </div>
+                    <div>
+                        <h3 class="post-card__title">The Allure of Colored Gemstones</h3>
+                        <p class="post-card__excerpt">
+                            While diamonds have long been the traditional choice for fine jewelry, colored gemstones offer a world of vibrant beauty and personal expression. From
+                            the deep green of emeralds to the rich red of rubies...
+                        </p>
+                        <a href="#blog" class="post-card__link">READ MORE</a>
+                    </div>
+                </article>
+
+                <article class="swiper-slide post-card">
+                    <div class="post-card__media">
+                        <img src="https://placehold.co/640x480/E9E1D8/242220?text=Layering" alt="Layered gold rings and bracelets" class="post-card__img" loading="lazy" />
+                    </div>
+                    <div>
+                        <h3 class="post-card__title">The Art of Layering: Mastering Stacked Jewelry</h3>
+                        <p class="post-card__excerpt">
+                            Discover the effortless art of layering necklaces, bracelets, and rings to create a personalized, curated look. Each piece tells its own story while
+                            harmonizing with the others...
+                        </p>
+                        <a href="#blog" class="post-card__link">READ MORE</a>
+                    </div>
+                </article>
+
+                <article class="swiper-slide post-card">
+                    <div class="post-card__media">
+                        <img src="https://placehold.co/640x480/D8C9B8/242220?text=Gold+Care" alt="18k gold pendant care" class="post-card__img" loading="lazy" />
+                    </div>
+                    <div>
+                        <h3 class="post-card__title">Caring for 18k Gold &amp; Pave Diamonds</h3>
+                        <p class="post-card__excerpt">
+                            Keep your heirloom pieces luminous for decades with simple daily care rituals, safe storage habits, and gentle at-home polishing techniques...
+                        </p>
+                        <a href="#blog" class="post-card__link">READ MORE</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    (function () {
+        'use strict';
+
+        /* --------------------------------------------------------------------
+         1. PRODUCT DATA & RENDERING (Lightweight placeholder URLs)
+         -------------------------------------------------------------------- */
+        const productImages = [
+            'https://placehold.co/600x660/F6F2ED/242220?text=Chandelier+Earrings',
+            'https://placehold.co/600x660/F6F2ED/242220?text=Stacked+Gold+Ring',
+            'https://placehold.co/600x660/F6F2ED/242220?text=Diamond+Cluster',
+            'https://placehold.co/600x660/F6F2ED/242220?text=Bypass+Ring',
+        ];
+
+        const swatches = [
+            { name: '18k Yellow Gold', hex: '#C8A45D' },
+            { name: '18k Rose Gold', hex: '#D8A48F' },
+            { name: 'Platinum', hex: '#D6D4D0' },
+            { name: 'Black Rhodium', hex: '#242220' },
+        ];
+
+        function createProductCardHTML(item, asSlide) {
+            const swatchHTML = swatches
+                .map((sw, idx) => `<button type="button" class="swatch-btn ${idx === 0 ? 'is-active' : ''}" style="background-color:${sw.hex};" aria-label="${sw.name}"></button>`)
+                .join('');
+
+            return `
+          <article class="${asSlide ? 'swiper-slide ' : ''}product-card">
+            <a href="#spotlight" class="product-card__media">
+              <img src="${item.img}" alt="${item.title}" class="product-card__img" loading="lazy" />
+            </a>
+            <div class="product-card__rating">
+              <span class="star-row" aria-label="4.95 out of 5 stars">★★★★★</span>
+              <span class="product-card__rating-text">4,95 (34)</span>
+            </div>
+            <h3 class="product-card__title">${item.title}</h3>
+            <div class="product-card__price-row">
+              <span class="price-current">$12,000.00</span>
+              <span class="price-compare">$15,000.00</span>
+            </div>
+            <div class="swatch-list">${swatchHTML}</div>
+          </article>
+        `;
+        }
+
+        const arrivalsData = [
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+        ];
+
+        const signaturesData = [
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
+        ];
+
+        const onlyForYouData = [
+            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Blue+Topaz+Drops' },
+            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Crescent+Pendant' },
+            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Floral+Ring' },
+            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Evil+Eye+Pendant' },
+            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Diamond+Bow' },
+        ];
+
+        document.getElementById('arrivalsWrapper').innerHTML = arrivalsData.map((item) => createProductCardHTML(item, true)).join('');
+
+        document.getElementById('signaturesGrid').innerHTML = signaturesData.map((item) => createProductCardHTML(item, false)).join('');
+
+        document.getElementById('onlyForYouGrid').innerHTML = onlyForYouData.map((item) => createProductCardHTML(item, false)).join('');
+
+        /* --------------------------------------------------------------------
+         2. SWIPER.JS INITIALIZATIONS
+         -------------------------------------------------------------------- */
+        if (typeof Swiper !== 'undefined') {
+            new Swiper('.hero-swiper', {
+                loop: true,
+                speed: 700,
+                autoplay: {
+                    delay: 5500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.hero-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.hero-next',
+                    prevEl: '.hero-prev',
+                },
+            });
+
+            new Swiper('.category-swiper', {
+                slidesPerView: 1.35,
+                spaceBetween: 16,
+                navigation: {
+                    nextEl: '.cat-next',
+                    prevEl: '.cat-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2.3, spaceBetween: 20 },
+                    1024: { slidesPerView: 4, spaceBetween: 24 },
+                },
+            });
+
+            new Swiper('.arrivals-swiper', {
+                slidesPerView: 1.35,
+                spaceBetween: 16,
+                navigation: {
+                    nextEl: '.arrivals-next',
+                    prevEl: '.arrivals-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2.3, spaceBetween: 20 },
+                    1024: { slidesPerView: 4, spaceBetween: 24 },
+                },
+            });
+
+            new Swiper('.worn-swiper', {
+                slidesPerView: 2.2,
+                spaceBetween: 12,
+                navigation: {
+                    nextEl: '.worn-next',
+                    prevEl: '.worn-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 4, spaceBetween: 14 },
+                    1024: { slidesPerView: 6, spaceBetween: 16 },
+                },
+            });
+
+            new Swiper('.posts-swiper', {
+                slidesPerView: 1.1,
+                spaceBetween: 20,
+                navigation: {
+                    nextEl: '.posts-next',
+                    prevEl: '.posts-prev',
+                },
+                breakpoints: {
+                    900: { slidesPerView: 2, spaceBetween: 32 },
+                },
+            });
+        }
+
+        /* --------------------------------------------------------------------
+         3. INTERACTIVE UI CONTROLS
+         -------------------------------------------------------------------- */
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+        mobileMenuBtn.addEventListener('click', function () {
+            const isOpen = mobileNavDrawer.classList.toggle('is-open');
+            mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.addEventListener('click', function (e) {
+            const swatch = e.target.closest('.swatch-btn');
+            if (!swatch) return;
+            const list = swatch.closest('.swatch-list');
+            list.querySelectorAll('.swatch-btn').forEach((btn) => btn.classList.remove('is-active'));
+            swatch.classList.add('is-active');
+        });
+
+        document.querySelectorAll('.hotspot__dot').forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const parent = btn.closest('.hotspot');
+                const wasActive = parent.classList.contains('is-active');
+                document.querySelectorAll('.hotspot').forEach((h) => h.classList.remove('is-active'));
+                if (!wasActive) parent.classList.add('is-active');
+            });
+        });
+
+        const cartCountEl = document.getElementById('cartCount');
+        const toastEl = document.getElementById('toast');
+        let toastTimer;
+
+        function showToast(message) {
+            toastEl.textContent = message;
+            toastEl.classList.add('is-visible');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 2600);
+        }
+
+        document.querySelectorAll('.js-add-to-bag').forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const current = parseInt(cartCountEl.textContent, 10) || 0;
+                cartCountEl.textContent = String(current + 1);
+                showToast(`${btn.dataset.product} added to your bag.`);
+            });
+        });
+
+        document.getElementById('accountBtn').addEventListener('click', function () {
+            showToast('Sign in to view your Solis account and rewards.');
+        });
+
+        document.getElementById('cartBtn').addEventListener('click', function () {
+            showToast(`You have ${cartCountEl.textContent} item(s) in your bag.`);
+        });
+
+        document.querySelectorAll('.worn-card__play').forEach((btn) => {
+            btn.addEventListener('click', function () {
+                showToast('Playing Solis community styling reel.');
+            });
+        });
+
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterMsg = document.getElementById('newsletterMsg');
+        newsletterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletterEmail').value.trim();
+            if (email) {
+                newsletterMsg.textContent = `Subscribed ${email} to Solis updates.`;
+                newsletterForm.reset();
+            }
+        });
+
+        let totalSeconds = 105 * 86400 + 8 * 3600 + 1 * 60 + 23;
+        const cdDays = document.getElementById('cdDays');
+        const cdHours = document.getElementById('cdHours');
+        const cdMins = document.getElementById('cdMins');
+        const cdSecs = document.getElementById('cdSecs');
+
+        function tickCountdown() {
+            if (totalSeconds <= 0) return;
+            totalSeconds -= 1;
+            const d = Math.floor(totalSeconds / 86400);
+            const h = Math.floor((totalSeconds % 86400) / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+            cdDays.textContent = String(d);
+            cdHours.textContent = String(h).padStart(2, '0');
+            cdMins.textContent = String(m).padStart(2, '0');
+            cdSecs.textContent = String(s).padStart(2, '0');
+        }
+        setInterval(tickCountdown, 1000);
+    })();
+</script>

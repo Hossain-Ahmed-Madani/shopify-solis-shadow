@@ -1,10 +1,13 @@
 {
-  "sections": {
-    "main": {
-      "type": "index-section"
-    }
-  },
-  "order": [
-    "main"
-  ]
+    "sections": {
+        "main": {
+            "type": "index-section",
+            "settings": {
+                "custom_class": "homepage"
+            }
+        }
+    },
+    "order": [
+        "main"
+    ]
 }
