@@ -1,13 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-    "sections": {
-        "main": {
-            "type": "index-section",
-            "settings": {
-                "custom_class": "homepage"
-            }
+  "sections": {
+    "heroslideshow": {
+      "type": "hero-slideshow",
+      "blocks": {
+        "slide1": {
+          "type": "slide_item",
+          "settings": {
+            "banner": "shopify://shop_images/159740.jpg",
+            "heading": "Chasing the sun",
+            "sub_heading": "THE SUMMER EDIT",
+            "primary_cta_label": "SHOP NOW",
+            "primary_cta_link": "/collections/all",
+            "secondary_cta_label": "DISCOVER MORE",
+            "secondary_cta_link": "/pages/about-us"
+          }
+        },
+        "slide2": {
+          "type": "slide_item",
+          "settings": {
+            "banner": "shopify://shop_images/black-and-blue-clothing-on-a-rack-in-a-sunlit-shop.jpg",
+            "heading": "Catch the light",
+            "sub_heading": "THE GOLD EDIT",
+            "primary_cta_label": "SHOP GOLD",
+            "primary_cta_link": "/collections/gold",
+            "secondary_cta_label": "OUR STORY",
+            "secondary_cta_link": "/pages/about-us"
+          }
         }
+      },
+      "block_order": [
+        "slide1",
+        "slide2"
+      ],
+      "settings": {
+        "slide_pagination": true,
+        "slide_navigation": true,
+        "slide_auto_play": true
+      }
     },
-    "order": [
-        "main"
-    ]
+    "main": {
+      "type": "index-section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "heroslideshow",
+    "main"
+  ]
 }

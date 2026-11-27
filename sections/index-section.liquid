@@ -1,5 +1,4 @@
- {{ 'index.css' | asset_url | stylesheet_tag }}
-
+{{ 'index.css' | asset_url | stylesheet_tag }}
 
 <!--
     ===================================================================
@@ -7,7 +6,7 @@
     ===================================================================
 -->
 
-<section class="hero-section" aria-label="Featured Collections">
+<section class="hero-section" aria-label="Featured Collections" style="display:none !important;">
     <div class="swiper hero-swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide hero-slide">
@@ -602,91 +601,86 @@
     </div>
 </section>
 
-
- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <script>
-    (function () {
-        'use strict';
-
-        /* --------------------------------------------------------------------
+    /* --------------------------------------------------------------------
          1. PRODUCT DATA & RENDERING (Lightweight placeholder URLs)
          -------------------------------------------------------------------- */
-        const productImages = [
-            'https://placehold.co/600x660/F6F2ED/242220?text=Chandelier+Earrings',
-            'https://placehold.co/600x660/F6F2ED/242220?text=Stacked+Gold+Ring',
-            'https://placehold.co/600x660/F6F2ED/242220?text=Diamond+Cluster',
-            'https://placehold.co/600x660/F6F2ED/242220?text=Bypass+Ring',
-        ];
+    const productImages = [
+        'https://placehold.co/600x660/F6F2ED/242220?text=Chandelier+Earrings',
+        'https://placehold.co/600x660/F6F2ED/242220?text=Stacked+Gold+Ring',
+        'https://placehold.co/600x660/F6F2ED/242220?text=Diamond+Cluster',
+        'https://placehold.co/600x660/F6F2ED/242220?text=Bypass+Ring',
+    ];
 
-        const swatches = [
-            { name: '18k Yellow Gold', hex: '#C8A45D' },
-            { name: '18k Rose Gold', hex: '#D8A48F' },
-            { name: 'Platinum', hex: '#D6D4D0' },
-            { name: 'Black Rhodium', hex: '#242220' },
-        ];
+    const swatches = [
+        { name: '18k Yellow Gold', hex: '#C8A45D' },
+        { name: '18k Rose Gold', hex: '#D8A48F' },
+        { name: 'Platinum', hex: '#D6D4D0' },
+        { name: 'Black Rhodium', hex: '#242220' },
+    ];
 
-        function createProductCardHTML(item, asSlide) {
-            const swatchHTML = swatches
-                .map((sw, idx) => `<button type="button" class="swatch-btn ${idx === 0 ? 'is-active' : ''}" style="background-color:${sw.hex};" aria-label="${sw.name}"></button>`)
-                .join('');
+    function createProductCardHTML(item, asSlide) {
+        const swatchHTML = swatches
+            .map((sw, idx) => `<button type="button" class="swatch-btn ${idx === 0 ? 'is-active' : ''}" style="background-color:${sw.hex};" aria-label="${sw.name}"></button>`)
+            .join('');
 
-            return `
-          <article class="${asSlide ? 'swiper-slide ' : ''}product-card">
-            <a href="#spotlight" class="product-card__media">
-              <img src="${item.img}" alt="${item.title}" class="product-card__img" loading="lazy" />
-            </a>
-            <div class="product-card__rating">
-              <span class="star-row" aria-label="4.95 out of 5 stars">★★★★★</span>
-              <span class="product-card__rating-text">4,95 (34)</span>
-            </div>
-            <h3 class="product-card__title">${item.title}</h3>
-            <div class="product-card__price-row">
-              <span class="price-current">$12,000.00</span>
-              <span class="price-compare">$15,000.00</span>
-            </div>
-            <div class="swatch-list">${swatchHTML}</div>
-          </article>
+        return /* HTML */ `
+            <article class="${asSlide ? 'swiper-slide ' : ''}product-card">
+                <a href="#spotlight" class="product-card__media">
+                    <img src="${item.img}" alt="${item.title}" class="product-card__img" loading="lazy" />
+                </a>
+                <div class="product-card__rating">
+                    <span class="star-row" aria-label="4.95 out of 5 stars">★★★★★</span>
+                    <span class="product-card__rating-text">4,95 (34)</span>
+                </div>
+                <h3 class="product-card__title">${item.title}</h3>
+                <div class="product-card__price-row">
+                    <span class="price-current">$12,000.00</span>
+                    <span class="price-compare">$15,000.00</span>
+                </div>
+                <div class="swatch-list">${swatchHTML}</div>
+            </article>
         `;
-        }
+    }
 
-        const arrivalsData = [
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
-        ];
+    const arrivalsData = [
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+    ];
 
-        const signaturesData = [
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
-        ];
+    const signaturesData = [
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
+    ];
 
-        const onlyForYouData = [
-            { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
-            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Blue+Topaz+Drops' },
-            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Crescent+Pendant' },
-            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Floral+Ring' },
-            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Evil+Eye+Pendant' },
-            { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Diamond+Bow' },
-        ];
+    const onlyForYouData = [
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+        { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Blue+Topaz+Drops' },
+        { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Crescent+Pendant' },
+        { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Floral+Ring' },
+        { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Evil+Eye+Pendant' },
+        { title: 'Classic Gold Three-Stone Diamond', img: 'https://placehold.co/600x660/F6F2ED/242220?text=Diamond+Bow' },
+    ];
 
-        document.getElementById('arrivalsWrapper').innerHTML = arrivalsData.map((item) => createProductCardHTML(item, true)).join('');
+    document.getElementById('arrivalsWrapper').innerHTML = arrivalsData.map((item) => createProductCardHTML(item, true)).join('');
 
-        document.getElementById('signaturesGrid').innerHTML = signaturesData.map((item) => createProductCardHTML(item, false)).join('');
+    document.getElementById('signaturesGrid').innerHTML = signaturesData.map((item) => createProductCardHTML(item, false)).join('');
 
-        document.getElementById('onlyForYouGrid').innerHTML = onlyForYouData.map((item) => createProductCardHTML(item, false)).join('');
+    document.getElementById('onlyForYouGrid').innerHTML = onlyForYouData.map((item) => createProductCardHTML(item, false)).join('');
 
-        /* --------------------------------------------------------------------
+    /* --------------------------------------------------------------------
          2. SWIPER.JS INITIALIZATIONS
          -------------------------------------------------------------------- */
+    document.addEventListener('DOMContentLoaded', (e) => {
         if (typeof Swiper !== 'undefined') {
             new Swiper('.hero-swiper', {
                 loop: true,
@@ -756,96 +750,96 @@
                 },
             });
         }
+    });
 
-        /* --------------------------------------------------------------------
+    /* --------------------------------------------------------------------
          3. INTERACTIVE UI CONTROLS
          -------------------------------------------------------------------- */
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNavDrawer = document.getElementById('mobileNavDrawer');
-        mobileMenuBtn.addEventListener('click', function () {
-            const isOpen = mobileNavDrawer.classList.toggle('is-open');
-            mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    mobileMenuBtn.addEventListener('click', function () {
+        const isOpen = mobileNavDrawer.classList.toggle('is-open');
+        mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', function (e) {
+        const swatch = e.target.closest('.swatch-btn');
+        if (!swatch) return;
+        const list = swatch.closest('.swatch-list');
+        list.querySelectorAll('.swatch-btn').forEach((btn) => btn.classList.remove('is-active'));
+        swatch.classList.add('is-active');
+    });
+
+    document.querySelectorAll('.hotspot__dot').forEach((btn) => {
+        btn.addEventListener('click', function () {
+            const parent = btn.closest('.hotspot');
+            const wasActive = parent.classList.contains('is-active');
+            document.querySelectorAll('.hotspot').forEach((h) => h.classList.remove('is-active'));
+            if (!wasActive) parent.classList.add('is-active');
         });
+    });
 
-        document.addEventListener('click', function (e) {
-            const swatch = e.target.closest('.swatch-btn');
-            if (!swatch) return;
-            const list = swatch.closest('.swatch-list');
-            list.querySelectorAll('.swatch-btn').forEach((btn) => btn.classList.remove('is-active'));
-            swatch.classList.add('is-active');
+    const cartCountEl = document.getElementById('cartCount');
+    const toastEl = document.getElementById('toast');
+    let toastTimer;
+
+    function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add('is-visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 2600);
+    }
+
+    document.querySelectorAll('.js-add-to-bag').forEach((btn) => {
+        btn.addEventListener('click', function () {
+            const current = parseInt(cartCountEl.textContent, 10) || 0;
+            cartCountEl.textContent = String(current + 1);
+            showToast(`${btn.dataset.product} added to your bag.`);
         });
+    });
 
-        document.querySelectorAll('.hotspot__dot').forEach((btn) => {
-            btn.addEventListener('click', function () {
-                const parent = btn.closest('.hotspot');
-                const wasActive = parent.classList.contains('is-active');
-                document.querySelectorAll('.hotspot').forEach((h) => h.classList.remove('is-active'));
-                if (!wasActive) parent.classList.add('is-active');
-            });
+    document.getElementById('accountBtn').addEventListener('click', function () {
+        showToast('Sign in to view your Solis account and rewards.');
+    });
+
+    document.getElementById('cartBtn').addEventListener('click', function () {
+        showToast(`You have ${cartCountEl.textContent} item(s) in your bag.`);
+    });
+
+    document.querySelectorAll('.worn-card__play').forEach((btn) => {
+        btn.addEventListener('click', function () {
+            showToast('Playing Solis community styling reel.');
         });
+    });
 
-        const cartCountEl = document.getElementById('cartCount');
-        const toastEl = document.getElementById('toast');
-        let toastTimer;
-
-        function showToast(message) {
-            toastEl.textContent = message;
-            toastEl.classList.add('is-visible');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 2600);
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterMsg = document.getElementById('newsletterMsg');
+    newsletterForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletterEmail').value.trim();
+        if (email) {
+            newsletterMsg.textContent = `Subscribed ${email} to Solis updates.`;
+            newsletterForm.reset();
         }
+    });
 
-        document.querySelectorAll('.js-add-to-bag').forEach((btn) => {
-            btn.addEventListener('click', function () {
-                const current = parseInt(cartCountEl.textContent, 10) || 0;
-                cartCountEl.textContent = String(current + 1);
-                showToast(`${btn.dataset.product} added to your bag.`);
-            });
-        });
+    let totalSeconds = 105 * 86400 + 8 * 3600 + 1 * 60 + 23;
+    const cdDays = document.getElementById('cdDays');
+    const cdHours = document.getElementById('cdHours');
+    const cdMins = document.getElementById('cdMins');
+    const cdSecs = document.getElementById('cdSecs');
 
-        document.getElementById('accountBtn').addEventListener('click', function () {
-            showToast('Sign in to view your Solis account and rewards.');
-        });
-
-        document.getElementById('cartBtn').addEventListener('click', function () {
-            showToast(`You have ${cartCountEl.textContent} item(s) in your bag.`);
-        });
-
-        document.querySelectorAll('.worn-card__play').forEach((btn) => {
-            btn.addEventListener('click', function () {
-                showToast('Playing Solis community styling reel.');
-            });
-        });
-
-        const newsletterForm = document.getElementById('newsletterForm');
-        const newsletterMsg = document.getElementById('newsletterMsg');
-        newsletterForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = document.getElementById('newsletterEmail').value.trim();
-            if (email) {
-                newsletterMsg.textContent = `Subscribed ${email} to Solis updates.`;
-                newsletterForm.reset();
-            }
-        });
-
-        let totalSeconds = 105 * 86400 + 8 * 3600 + 1 * 60 + 23;
-        const cdDays = document.getElementById('cdDays');
-        const cdHours = document.getElementById('cdHours');
-        const cdMins = document.getElementById('cdMins');
-        const cdSecs = document.getElementById('cdSecs');
-
-        function tickCountdown() {
-            if (totalSeconds <= 0) return;
-            totalSeconds -= 1;
-            const d = Math.floor(totalSeconds / 86400);
-            const h = Math.floor((totalSeconds % 86400) / 3600);
-            const m = Math.floor((totalSeconds % 3600) / 60);
-            const s = totalSeconds % 60;
-            cdDays.textContent = String(d);
-            cdHours.textContent = String(h).padStart(2, '0');
-            cdMins.textContent = String(m).padStart(2, '0');
-            cdSecs.textContent = String(s).padStart(2, '0');
-        }
-        setInterval(tickCountdown, 1000);
-    })();
+    function tickCountdown() {
+        if (totalSeconds <= 0) return;
+        totalSeconds -= 1;
+        const d = Math.floor(totalSeconds / 86400);
+        const h = Math.floor((totalSeconds % 86400) / 3600);
+        const m = Math.floor((totalSeconds % 3600) / 60);
+        const s = totalSeconds % 60;
+        cdDays.textContent = String(d);
+        cdHours.textContent = String(h).padStart(2, '0');
+        cdMins.textContent = String(m).padStart(2, '0');
+        cdSecs.textContent = String(s).padStart(2, '0');
+    }
+    setInterval(tickCountdown, 1000);
 </script>

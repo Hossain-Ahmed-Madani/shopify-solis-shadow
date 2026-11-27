@@ -1,0 +1,62 @@
+<!--
+    ===================================================================
+    SECTION 3: OUR NEW ARRIVALS (Swiper)
+    ===================================================================
+-->
+<section class="section-block" id="new-arrivals" style="padding-top: 0">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="heading-h2">Our New Arrivals</h2>
+            <div class="swiper-nav-group">
+                <button class="swiper-arrow-btn arrivals-prev" aria-label="Previous new arrivals">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="swiper-arrow-btn arrivals-next" aria-label="Next new arrivals">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="swiper arrivals-swiper">
+            <div class="swiper-wrapper" id="arrivalsWrapper"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const productImages = [
+        'https://placehold.co/600x660/F6F2ED/242220?text=Chandelier+Earrings',
+        'https://placehold.co/600x660/F6F2ED/242220?text=Stacked+Gold+Ring',
+        'https://placehold.co/600x660/F6F2ED/242220?text=Diamond+Cluster',
+        'https://placehold.co/600x660/F6F2ED/242220?text=Bypass+Ring',
+    ];
+
+    const arrivalsData = [
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[1] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[2] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[3] },
+        { title: 'Classic Gold Three-Stone Diamond', img: productImages[0] },
+    ];
+
+    document.getElementById('arrivalsWrapper').innerHTML = arrivalsData.map((item) => createProductCardHTML(item, true)).join('');
+
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.arrivals-swiper', {
+            slidesPerView: 1.35,
+            spaceBetween: 16,
+            navigation: {
+                nextEl: '.arrivals-next',
+                prevEl: '.arrivals-prev',
+            },
+            breakpoints: {
+                640: { slidesPerView: 2.3, spaceBetween: 20 },
+                1024: { slidesPerView: 4, spaceBetween: 24 },
+            },
+        });
+    }
+</script>

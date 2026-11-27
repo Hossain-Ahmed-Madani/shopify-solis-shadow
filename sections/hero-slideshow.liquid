@@ -1,0 +1,406 @@
+<!--
+    ===================================================================
+    SECTION 1: HERO BANNER SLIDER (Swiper)
+    ===================================================================
+-->
+
+{% stylesheet %}
+    /* HERO BANNER SLIDER
+   -------------------------------------------------------------------------- */
+    .hero-section {
+        position: relative;
+        width: 100%;
+    }
+
+    .hero-slide {
+        position: relative;
+        height: 520px;
+        overflow: hidden;
+        background-color: var(--color-primary);
+    }
+
+    @media (min-width: 1024px) {
+        .hero-slide {
+            height: 580px;
+        }
+    }
+
+    .hero-slide__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+    }
+
+    .hero-slide__overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(24, 20, 17, 0.72) 0%, rgba(24, 20, 17, 0.32) 52%, rgba(24, 20, 17, 0.08) 100%);
+    }
+
+    .hero-slide__content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: var(--space-14);
+    }
+
+    .hero-slide__text {
+        max-width: 520px;
+        color: var(--color-white);
+    }
+
+    .hero-slide__eyebrow {
+        font-size: var(--text-ui-sm-size);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: rgba(255, 255, 255, 0.88);
+        margin-bottom: var(--space-4);
+    }
+
+    .hero-slide__title {
+        font-family: var(--font-display);
+        font-size: var(--text-display-size);
+        line-height: var(--text-display-lh);
+        font-weight: 500;
+        color: var(--color-white);
+        margin-bottom: var(--space-9);
+    }
+
+    .hero-slide__actions {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media (min-width: 1024px) {
+        .hero-slide__actions {
+            flex-wrap: nowrap;
+            flex-direction: row;
+            gap: var(--space-6);
+        }
+    }
+
+    .hero-swiper .swiper-pagination {
+        bottom: 20px !important;
+    }
+
+    .hero-swiper .swiper-pagination-bullet {
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.55);
+        opacity: 1;
+        margin: 0 4px !important;
+    }
+
+    .hero-swiper .swiper-pagination-bullet-active {
+        background: var(--color-white);
+        width: 8px;
+        height: 8px;
+    }
+
+    .hero-controls-corner {
+        position: absolute;
+        right: 24px;
+        bottom: 20px;
+        z-index: 10;
+        display: flex;
+        gap: 6px;
+    }
+
+    .hero-corner-btn {
+        width: 28px;
+        height: 28px;
+        background-color: var(--color-white);
+        color: var(--color-primary);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color var(--transition-base);
+    }
+
+    .hero-corner-btn:hover {
+        background-color: var(--color-bg-alt);
+    }
+{% endstylesheet %}
+
+{% liquid
+    assign slide_pagination = section.settings.slide_pagination
+    assign slide_navigation = section.settings.slide_navigation
+    assign slide_auto_play = section.settings.slide_auto_play
+    assign slide_items = section.blocks | where: 'type', 'slide_item'
+%}
+
+<section class="hero-section" aria-label="Featured Collections">
+    <div class="swiper hero-swiper" id="HeroSwiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+            {% for item in slide_items %}
+                <div class="swiper-slide hero-slide" {{ item.shopify_attributes }}>
+                    {% if item.settings.banner != blank %}
+                        <img
+                            src="{{ item.settings.banner | image_url: width: 2000 }}"
+                            alt="{{ item.settings.banner.alt | default: item.settings.heading | escape }}"
+                            class="hero-slide__img"
+                            width="{{ item.settings.banner.width }}"
+                            height="{{ item.settings.banner.height }}"
+                            {% if forloop.first %}
+                                fetchpriority="high"
+                            {% else %}
+                                loading="lazy"
+                            {% endif %}
+                        />
+                    {% endif %}
+
+                    <div class="hero-slide__overlay"></div>
+
+                    <div class="hero-slide__content">
+                        <div class="container">
+                            <div class="hero-slide__text">
+                                {% if item.settings.sub_heading != blank %}
+                                    <p class="hero-slide__eyebrow">
+                                        {{ item.settings.sub_heading }}
+                                    </p>
+                                {% endif %}
+
+                                {% if item.settings.heading != blank %}
+                                    <h1 class="hero-slide__title">
+                                        {{ item.settings.heading }}
+                                    </h1>
+                                {% endif %}
+
+                                <div class="hero-slide__actions">
+                                    {% if item.settings.primary_cta_label != blank %}
+                                        {% render 'button',
+                                            text: item.settings.primary_cta_label,
+                                            url: item.settings.primary_cta_link,
+                                            variant: 'primary',
+                                            size: 'md',
+                                            disabled: false,
+                                            full_width: true
+                                        %}
+                                    {% endif %}
+
+                                    {% if item.settings.secondary_cta_label != blank %}
+                                        {% render 'button',
+                                            text: item.settings.secondary_cta_label,
+                                            url: item.settings.secondary_cta_link,
+                                            variant: 'secondary',
+                                            size: 'md',
+                                            disabled: false,
+                                            full_width: true
+                                        %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if slide_pagination and slide_items.size > 1 %}
+            <div class="swiper-pagination hero-pagination"></div>
+        {% endif %}
+
+        {% if slide_navigation and slide_items.size > 1 %}
+            <div class="hero-controls-corner">
+                <button
+                    type="button"
+                    class="hero-corner-btn hero-prev"
+                    aria-label="Previous hero slide"
+                >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <button
+                    type="button"
+                    class="hero-corner-btn hero-next"
+                    aria-label="Next hero slide"
+                >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<script>
+    (function () {
+        function initHeroSwiper() {
+            const heroElement = document.querySelector(
+                '#HeroSwiper-{{ section.id }}'
+            );
+
+            if (!heroElement || typeof Swiper === 'undefined') return;
+
+            // Prevent duplicate initialization
+            if (heroElement.swiper) return;
+
+            const paginationEnabled = {{ slide_pagination | json }};
+            const navigationEnabled = {{ slide_navigation | json }};
+            const autoplayEnabled = {{ slide_auto_play | json }};
+            const slideCount = {{ slide_items.size }};
+
+            if (slideCount <= 1) return;
+
+            new Swiper(heroElement, {
+                loop: true,
+                speed: 700,
+
+                ...(autoplayEnabled && {
+                    autoplay: {
+                        delay: 5500,
+                        disableOnInteraction: false
+                    }
+                }),
+
+                ...(paginationEnabled && {
+                    pagination: {
+                        el: heroElement.querySelector('.hero-pagination'),
+                        clickable: true
+                    }
+                }),
+
+                ...(navigationEnabled && {
+                    navigation: {
+                        nextEl: heroElement.querySelector('.hero-next'),
+                        prevEl: heroElement.querySelector('.hero-prev')
+                    }
+                })
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHeroSwiper);
+        } else {
+            initHeroSwiper();
+        }
+
+        // Shopify Theme Editor support
+        document.addEventListener('shopify:section:load', function (event) {
+            if (event.detail.sectionId === '{{ section.id }}') {
+                initHeroSwiper();
+            }
+        });
+
+    })();
+</script>
+
+{% schema %}
+{
+    "name": "Hero Slideshow",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "slide_pagination",
+            "label": "Pagination",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "slide_navigation",
+            "label": "Navigation",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "slide_auto_play",
+            "label": "Auto play",
+            "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "type": "slide_item",
+            "name": "Hero Slide Item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "banner",
+                    "label": "Banner Image"
+                },
+                {
+                    "type": "text",
+                    "id": "heading",
+                    "label": "Heading",
+                    "default": "Chasing the sun"
+                },
+                {
+                    "type": "text",
+                    "id": "sub_heading",
+                    "label": "Sub Heading",
+                    "default": "THE SUMMER EDIT"
+                },
+                {
+                    "type": "text",
+                    "id": "primary_cta_label",
+                    "label": "Primary Button Label",
+                    "default": "SHOP NOW"
+                },
+                {
+                    "type": "url",
+                    "id": "primary_cta_link",
+                    "label": "Primary Button Link"
+                },
+                {
+                    "type": "text",
+                    "id": "secondary_cta_label",
+                    "label": "Secondary Button Label",
+                    "default": "DISCOVER MORE"
+                },
+                {
+                    "type": "url",
+                    "id": "secondary_cta_link",
+                    "label": "Secondary Button Link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Hero Slideshow",
+            "settings": {
+                "slide_pagination": true,
+                "slide_navigation": true,
+                "slide_auto_play": true
+            },
+            "blocks": [
+                {
+                    "type": "slide_item",
+                    "settings": {
+                        "heading": "Chasing the sun",
+                        "sub_heading": "THE SUMMER EDIT",
+                        "primary_cta_label": "SHOP NOW",
+                        "secondary_cta_label": "DISCOVER MORE"
+                    }
+                },
+                {
+                    "type": "slide_item",
+                    "settings": {
+                        "heading": "Catch the light",
+                        "sub_heading": "THE GOLD EDIT",
+                        "primary_cta_label": "SHOP GOLD",
+                        "secondary_cta_label": "OUR STORY"
+                    }
+                },
+                {
+                    "type": "slide_item",
+                    "settings": {
+                        "heading": "Sculptural warmth",
+                        "sub_heading": "THE ETERNAL EDIT",
+                        "primary_cta_label": "SHOP THE LOOK",
+                        "secondary_cta_label": "EXPLORE"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

@@ -25,6 +25,8 @@
 
         <!-- Swiper.js CSS (CDN) -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <!-- Swiper.js JS (CDN) -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
         {% if page_description %}
             <meta name="description" content="{{ page_description | escape }}">
@@ -39,12 +41,14 @@
         {% section 'announcement-bar' %}
         {% section 'header' %}
         {% section 'cart-drawer' %}
+
         <main role="main" tabindex="-1">
             {{ content_for_layout }}
         </main>
+
         {% section 'footer' %}
-        <!-- Swiper.js JS (CDN) -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+        
         <script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
         <script src="{{ 'custom.js' | asset_url }}" defer></script>
     </body>

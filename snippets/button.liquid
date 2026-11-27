@@ -1,0 +1,47 @@
+{%- liquid
+    assign button_text = text | default: 'Button'
+    assign button_variant = variant | default: 'primary'
+    assign button_size = size | default: 'md'
+    assign button_tag = tag | default: 'a'
+
+    assign button_classes = 'btn btn--' | append: button_variant | append: ' btn--' | append: button_size
+
+    if full_width
+        assign button_classes = button_classes | append: ' btn--full'
+    endif
+-%}
+
+{%- if button_tag == 'button' -%}
+    <button
+        type="{{ type | default: 'button' }}"
+        class="{{ button_classes }}"
+        {% if disabled %}
+            disabled
+        {% endif %}
+        {% if id != blank %}
+            id="{{ id }}"
+        {% endif %}
+        {% if attributes != blank %}
+            {{- attributes -}}
+        {% endif %}
+    >
+        {{- button_text -}}
+    </button>
+{%- else -%}
+    <a
+        href="{{ url | default: '#' }}"
+        class="{{ button_classes }}"
+        {% if disabled %}
+            aria-disabled="true"
+            tabindex="-1"
+        {% endif %}
+        {% if target != blank %}
+            target="{{ target }}"
+        {% endif %}
+        {% if id != blank %}
+            id="{{ id }}"
+        {% endif %}
+    >
+        {{- button_text -}}
+    </a>
+{%- endif -%}

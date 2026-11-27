@@ -110,8 +110,15 @@
 
 .hero-slide__actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-6);
+    flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+    .hero-slide__actions {
+        flex-wrap: nowrap;
+        flex-direction: row;
+        gap: var(--space-6);
+    }
 }
 
 .hero-swiper .swiper-pagination {
